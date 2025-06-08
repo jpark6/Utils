@@ -44,11 +44,13 @@ def fetch_dms(workspace_id):
                     user_info = client.users_info(user=user_id)
                     profile = user_info["user"]["profile"]
                     real_name = profile.get("real_name", "")
+                    name = user_info["user"]["name"]
                     display_name = profile.get("display_name", "")
                     name_to_show = real_name or display_name or user_id
 
                     dms.append({
                         "username": name_to_show,
+                        "name": name,
                         "user_id": user_id,
                         "dm_id": dm["id"],
                         "url": f"slack://channel?team={workspace_id}&id={dm['id']}"
