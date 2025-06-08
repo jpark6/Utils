@@ -17,7 +17,7 @@ def build_choice_list(data):
         })
 
     for dm in data.get("dms", []):
-        label = f"[DM] @{dm['username']}"
+        label = f"[DM] @{dm['username']}-{dm['name']}"
         choices.append({
             "name": label,
             "url": dm["url"]
@@ -27,7 +27,7 @@ def build_choice_list(data):
 
 def fuzzy_select_and_open(choices):
     selected = inquirer.fuzzy(
-        message="📺 채널 또는 💬 DM 검색:",
+        message="📺 채널 or 💬 DM 검색:",
         choices=[item["name"] for item in choices],
         validate=lambda result: result in [item["name"] for item in choices]
     ).execute()
