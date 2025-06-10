@@ -1,5 +1,6 @@
 import yaml
 import webbrowser
+import platform
 from InquirerPy import inquirer
 
 def load_slack_list(yaml_file="slack_list.yaml"):
@@ -37,7 +38,9 @@ def fuzzy_select_and_open(choices):
     webbrowser.open(selected_item["url"])
 
 if __name__ == "__main__":
-    slack_data = load_slack_list("slack_list.yaml")
+    os_name = platform.system()
+    yaml_file = "D:\\Repos\\Utils\\python\\slack_list.yaml" if os_name=="Windows" else "/Users/jakepark/Repos/Utils/python/slack_list.yaml" 
+    slack_data = load_slack_list(yaml_file)
     choice_list = build_choice_list(slack_data)
     if not choice_list:
         print("채널 또는 DM 항목이 없습니다.")
