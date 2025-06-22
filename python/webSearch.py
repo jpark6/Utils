@@ -1,10 +1,10 @@
 import sys
+import os
 import webbrowser
 import urllib.parse
 import yaml
 
-
-def load_engines(yaml_path="/Users/jakepark/Workspaces/python/web/engines.yaml"):
+def load_engines(yaml_path=os.path.join(os.path.expanduser("~"), ".config", "websearch", "engines.yaml")):
     with open(yaml_path, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
@@ -28,6 +28,7 @@ def main():
     encoded_query = urllib.parse.quote(query)
 
     try:
+
         engines = load_engines()
     except Exception as e:
         print(f"❌ engines.yaml 로딩 실패: {e}")
