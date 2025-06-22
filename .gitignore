@@ -2,4 +2,4 @@ python/token.txt
 python/engines.yaml
 python/slack_list.yaml
 
-
+rust/*/target
