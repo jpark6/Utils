@@ -4,7 +4,7 @@ import webbrowser
 import urllib.parse
 import yaml
 
-def load_engines(yaml_path=os.path.join(os.path.expanduser("~"), ".config", "websearch", "engines.yaml")):
+def load_engines(yaml_path=os.path.join(os.path.expanduser("~"), ".config", "files", "engines.yaml")):
     with open(yaml_path, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
