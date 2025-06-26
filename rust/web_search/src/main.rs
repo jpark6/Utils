@@ -17,8 +17,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     // Read the engines.yaml file
-    let home_dir = env::var("HOME")?;
-    let yaml_path = format!("{}/.config/files/engines.yaml", home_dir);
+    let home_dir = dirs::home_dir().expect("홈 디렉토리를 찾을 수 없습니다.");
+    let yaml_path = home_dir.join(".config").join("files").join("engines.yaml");
     let yaml_content = fs::read_to_string(&yaml_path)?;
 
     // Deserialize the YAML content into a HashMap
