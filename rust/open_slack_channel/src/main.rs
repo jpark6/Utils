@@ -76,8 +76,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .join("\n");
 
     let options = SkimOptionsBuilder::default()
-        .height(Some("50%"))
-        .prompt(Some("검색 > "))
+        // .height(Some("50%"))
+        .prompt(Some("💬 "))
         .multi(false)
         .build()
         .unwrap();
@@ -99,7 +99,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         // display 문자열을 통해 URL 찾기
         if let Some(entry) = entries.iter().find(|e| e.display == selected_display) {
-            println!("열기: {}", entry.url);
+            println!("🚀 {}", entry.url);
             open::that(&entry.url)?;
         }
     } else {
